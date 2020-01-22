@@ -1,0 +1,84 @@
+server:
+  port: 9090
+  context-path: /bsp
+
+security.basic.enabled: false
+
+spring:
+  thymeleaf:
+    cache: false
+  http:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+  template:
+    cache: false
+  data:
+    jpa:
+      repositories:
+        enabled: true
+#    maxPoolSize: 10
+  jpa:
+    generate-ddl: true
+    show-sql: true
+#    database-platform: org.hibernate.dialect.Oracle10gDialect
+    hibernate:
+      show-sql: true
+      ddl-auto: update
+      naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        default_schema: cm_bsperp
+        id.new_generator_mappings: true
+        dialect: org.hibernate.dialect.MySQLDialect
+  datasource:
+    platform: org.hibernate.dialect.MySQLDialect
+    continue-on-error: true
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cm_bsperp
+    username: root
+    password: sa321
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username:
+    password: 123456
+    protocol: smtp
+  messages:
+    always-use-message-format: false # Set whether to always apply the MessageFormat rules, parsing even messages without arguments.
+    basename: i18n/messages # Comma-separated list of basenames, each following the ResourceBundle convention.
+    cache-seconds: -1 # Loaded resource bundle files cache expiration, in seconds. When set to -1, bundles are cached forever.
+    encoding: UTF-8 # Message bundles encoding.
+    fallback-to-system-locale: true # Set whether to fall back to the system Locale if no files for a specific Locale have been found.
+
+
+#database.driver: com.mysql.jdbc.Driver
+#database.url: jdbc:mysql://localhost:3306/concretepage
+#hibernate.dialect: org.hibernate.dialect.MySQLDialect
+
+#---hibernate.dialect
+#
+#---hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
+#---hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+#---hibernate.dialect=org.hibernate.dialect.DerbyTenSevenDialect
+#---hibernate.dialect=org.hibernate.dialect.H2Dialect
+#---hibernate.dialect=org.hibernate.dialect.MySQLDialect
+#---hibernate.dialect=org.hibernate.dialect.SQLServerDialect
+#
+#---jdbc.driverClassName
+#
+#---#jdbc.driverClassName=oracle.jdbc.OracleDriver
+#---#jdbc.driverClassName=org.postgresql.Driver
+#---#jdbc.driverClassName=org.apache.derby.jdbc.ClientDriver
+#---#jdbc.driverClassName=org.h2.Driver
+#---#jdbc.driverClassName=com.mysql.jdbc.Driver
+#---#jdbc.driverClassName=com.microsoft.jdbc.sqlserver.SQLServerDriver
+#
+#---jdbc.url
+#
+#---#jdbc.url=jdbc:oracle:thin:@118.179.214.249:1521:hrms
+#---#jdbc.url=jdbc:postgresql://localhost:5432/testdb
+#---#jdbc.url=jdbc:derby://localhost:1527/sample
+#---#jdbc.url=jdbc:h2:~/test
+#---#jdbc.url=jdbc:mysql://localhost:3306/test
+#---#jdbc.url=jdbc:microsoft:sqlserver://localhost:1433;DatabaseName=DATABASE
