@@ -1,0 +1,132 @@
+<!--Left Nav Menu-->
+
+<div class="col-md-2 col-xs-2 col-2" th:fragment="left-nav" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="panel">
+        <div class="panel-heading one">Master Panel</div>
+        <div class="list-group panel">
+            <a class="list-group-item list-group-item-success" href="#accounts-master" data-toggle="collapse" data-parent="#MainMenu">Accounts Master
+                <i class="fa fa-caret-down"></i>
+            </a>
+            <div id="accounts-master" class="collapse">
+                <a class="list-group-item" th:href="@{/accountsGroup}">Group</a>
+                <a class="list-group-item" th:href="@{/ledger}" >Ledger</a>
+                <a class="list-group-item" th:href="@{/costCenter}" >Cost Center</a>
+                <!--<a class="list-group-item" th:href="@{/voucherType}">Voucher Type</a>-->
+            </div>
+            <a class="list-group-item list-group-item-success" href="#inventory-master" data-toggle="collapse" data-parent="#MainMenu">Inventory Master
+                <i class="fa fa-caret-down"></i>
+            </a>
+            <div id="inventory-master" class="collapse">
+                <a class="list-group-item" th:href="@{/stockGroup}">Stock Group</a>
+                <a class="list-group-item" th:href="@{/godown}">Stock Godown</a>
+                <a class="list-group-item" th:href="@{/unit}">Unit of Measure</a>
+                <a class="list-group-item" th:href="@{/item}">Stock Item</a>
+                <a class="list-group-item" th:href="@{/service}">Service Item</a>
+            </div>
+
+            <!--<a class="list-group-item list-group-item-success" th:href="@{/accountingVouchers/create}" data-parent="#MainMenu">Account Voucher</a>-->
+            <a class="list-group-item list-group-item-success" th:href="@{/accountingVouchers/811}">Voucher Entry
+                <i class="fa fa-caret-down" data-toggle="collapse" data-parent="#MainMenu" href="#account-voucher">
+                </i>
+            </a>
+            <div id="account-voucher" class="collapse">
+                <div th:each="voucherType:${AcVoucherTypes}">
+                    <a th:class="'list-group-item voucher-type-'+${voucherType.id}"  th:href="@{'/accountingVouchers/create/'}+${voucherType.id}" th:text="${voucherType.name}">GROUP</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Right Nav Menu-->
+<div class="col-md-2 col-xs-2 col-2" th:fragment="right-nav" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="main">
+        <div class="menu" >
+            <div id="cat_icon">
+                <i id="link_1" class="fa fa-cogs expandCourse" ><span class="report-panel-title-fade-in"><p>Report Panel</p></span></i>
+                <i id="link_2" class="fa fa-cogs expandCourse" ><span class="report-panel-title-fade-in"><p>Empty Area</p></span></i>
+            </div>
+        </div>
+        <div class="categories">
+            <div class="link_1">
+                <div class="panel_title">
+                    <div class="report-panel-design"><i class="fa fa-cogs"><span class="report-panel-title-fade-out"><p>Report Panel<!--<sup> [x close]</sup>--></p></span></i></div>
+                </div>
+                <div class="panel">
+
+                    <div class="list-group panel">
+                        <a class="list-group-item list-group-item-success" th:href="@{/report/balanceSheet}">Balance Sheet</a>
+                        <a class="list-group-item list-group-item-success" href="#trial-balance" data-toggle="collapse" data-parent="#MainMenu">Trial Balance
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                        <div id="trial-balance" class="collapse">
+                            <a class="list-group-item" th:href="@{/report/trialBalanceGetAllLedger}">Ledger Wise Trial Balance</a>
+                            <a class="list-group-item" th:href="@{/report/trialBalanceGetAllGroup}">Group Wise Trial Balance</a>
+                            <a class="list-group-item" th:href="@{/report/trialBalanceGetAllGroupAndLedger}">Ledger Group Wise Trial Balance</a>
+                            <a class="list-group-item" th:href="@{/report/balanceSheet}">Ledger Group Wise Trial Balance</a>
+                        </div>
+
+                        <a class="list-group-item list-group-item-success" th:href="@{/report/profitAndLossAccount}">Profit Loss A/c</a>
+                        <a class="list-group-item list-group-item-success" th:href="@{main}" data-toggle="collapse" data-parent="#MainMenu">Cash Flow</a>
+                        <a class="list-group-item list-group-item-success" th:href="@{main}" data-toggle="collapse" data-parent="#MainMenu">Owner's Equity</a>
+                        <a class="list-group-item list-group-item-success" th:href="@{/report/statement}">Statement</a>
+                        <a class="list-group-item list-group-item-success" th:href="@{/report/daySummery}">Day Summery</a>
+                        <a class="list-group-item list-group-item-success" href="#ratio-analysis" data-toggle="collapse" data-parent="#MainMenu">Ratio Analysis
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                        <div id="ratio-analysis" class="collapse list-group-submenu">
+                            <a class="list-group-item" href="#profitability-ratio" data-toggle="collapse" data-parent="#SubSubMenu1">Profitability Ratio
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <div id="profitability-ratio" class="collapse list-group-submenu list-group-submenu-1">
+                                <a class="list-group-item" th:href="@{main}" data-parent="#SubSubMenu1">Gross Profit Margin</a>
+                                <a class="list-group-item" th:href="@{main}" data-parent="#SubSubMenu1">Net Profit Margin</a>
+                            </div>
+                            <a class="list-group-item" href="#liquidity-ratio" data-toggle="collapse" data-parent="#liquidityratio">Liquidity Ratio
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <div id="liquidity-ratio" class="collapse list-group-submenu list-group-submenu-1">
+                                <a class="list-group-item" th:href="@{main}" data-parent="#liquidityratio">Current Ratio </a>
+                                <a class="list-group-item" th:href="@{main}" data-parent="#liquidityratio">Quick Ratio</a>
+                                <a class="list-group-item" th:href="@{main}" data-parent="#liquidityratio">Receivable Turn Over </a>
+                                <a class="list-group-item" th:href="@{main}" data-parent="#liquidityratio">Payable Turn Over</a>
+                                <a class="list-group-item" th:href="@{main}" data-parent="#liquidityratio">Inventory Turn Over</a>
+                            </div>
+                            <a class="list-group-item" href="#investor-ratio" data-toggle="collapse" data-parent="#investorratio">Investor Ratio
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <div id="investor-ratio" class="collapse list-group-submenu list-group-submenu-1">
+                                <a class="list-group-item" th:href="@{main}" data-parent="#investorratio">Price Earning Ratio</a>
+                                <a class="list-group-item" th:href="@{main}" data-parent="#investorratio">Return On Capital Employed </a>
+                                <a class="list-group-item" th:href="@{main}" data-parent="#investorratio">Dividend Cover Ratio</a>
+                                <a class="list-group-item" th:href="@{main}" data-parent="#investorratio">Interest Cover Ratio</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="link_2">
+                <div class="panel_title2">
+                    <div class="report-panel-design"><i class="fa fa-cogs"><span class="report-panel-title-fade-out"><p>Empty Area</p></span></i></div>
+                </div>
+                <div class="panel right-nav-area">
+                    <p>
+                        It is a long established fact that a reader will be distracted by
+                        the readable content of a page when looking at its layout.
+                        The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
+                        as opposed to using 'Content here, content here', making it look like readable English.
+                        Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text,
+                        and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
+                        Various versions have evolved over the years, sometimes by accident,
+                        sometimes on purpose (injected humour and the like).
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</div>
+

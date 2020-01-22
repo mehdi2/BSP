@@ -1,0 +1,82 @@
+<!--Top Header-->
+
+
+<div class="top-header" th:fragment="top-header" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="row one">
+        <div class="col-md-2 col-xs-2 col-2" style="height:35px;">
+            <div class="navbar-header">
+                <a class="navbar-brand bsp-erp-logo" href="#">BSP</a>
+            </div>
+        </div>
+        <div class="col-md-8 col-xs-8 col-8" style="height:35px;" align="center">
+            <div class="owl-carousel owl-theme cp-list" >
+                <div class="item" th:href="@{main}" th:each="company : ${companies}">
+                    <a th:text="${company.companyName}"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2 col-xs-2 col-2" style="height:35px;">
+            <ul class="nav navbar-nav pull-right nav-custom">
+                <li class="dropdown ">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user-circle-o fa-2x"></i></a>
+                    <ul class="dropdown-menu dropdown-pull-right">
+                        <li><a th:href="@{/company}">Company</a></li>
+                        <li><a th:href="@{main}">Company List</a></li>
+                        <li><a th:href="@{/user}">User</a></li>
+                        <li><a href="#">User and Security</a></li>
+                        <li class="divider"></li>
+                        <li><a th:href="@{/voucherType}">Voucher Type</a></li>
+                        <li class="divider"></li>
+                        <li class="user-image"><a href="#"><i class="fa fa-user-circle fa-2x"></i></a></li>
+                        <li class="divider"></li>
+                        <li class="text-center">
+                            <form th:action="@{/login}" method="POST">
+                                <!--<a th:href="@{/logout}">Sign Out</a>-->
+                                <input type="submit" value="Sign Out"/>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#"><i class="fa fa-cog fa-2x"></i></a></li>
+                <li><a href="#"><i class="fa fa-bell fa-2x"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--Bottom Header-->
+<div class="bottom-header" th:fragment="bottom-header">
+    <div class="row combox">
+        <div class="col-md-2 col-xs-2 col-2">
+            <div class="search-bar">
+                <label>Search what you want</label>
+                <!--<form action="" id="header-search">-->
+                <input id="search-input" class="form-control form-control-custome" type="search" autocomplete="off" name="s" placeholder="Type your search" value="" />
+                <!-- <button type="submit" id="search-submit" class="btn"></button> -->
+                <!--</form>-->
+            </div>
+        </div>
+        <div class="col-md-8 col-xs-8 col-8">
+            <label>Voucher Selection</label>
+            <div class="owl-carousel owl-theme cp-list" >
+                <div th:href="@{main}" th:each="voucherType : ${AcVoucherTypes}">
+                    <div th:class="'item '+ ${voucherType.id==voucherTypeId?'active focused':''}">
+                        <a th:class="'voucher-type-'+${voucherType.id}" th:href="${voucherType.id == 813|| voucherType.id==820}?@{'/accountingStockVouchers/'}+${voucherType.id}:@{'/accountingVouchers/'}+${voucherType.id}" th:text="${voucherType.name}"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-xs-2 col-2">
+            <div class="search-bar">
+                <label>Period</label>
+                <!--<form action="" id="header-search">-->
+                <div id="datepicker-menu" class="input-group date" data-date-format="dd/mm/yyyy">
+                    <input class="form-control form-control-custome bsp-tab" type="text" />
+                    <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                </div>
+                <!--</form>-->
+            </div>
+        </div>
+    </div>
+</div>

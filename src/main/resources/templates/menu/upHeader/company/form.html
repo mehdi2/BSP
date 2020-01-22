@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="main">
+    <head>
+        <title th:text="#{company.title}">Company</title>
+    </head>
+    <body>
+        <div class="right_col" role="main" layout:fragment="content">
+            <div th:if="${msg.getDisplay()}" class="alert alert-danger fade in" >
+                <!--<strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.-->
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong th:text="${msg.message}"></strong>
+            </div>
+            <div class="panel">
+                <div class="panel-heading one" th:if="${mode=='create'}" th:text="#{company.creation.label}">Company Name and Information</div>
+                <div class="panel-heading one" th:if="${mode=='edit'}" th:text="#{company.information.label}">Company Name and Information</div>
+
+                <div class="panel-body border-color">
+                    <form th:action="@{/company/}+${mode}" th:object="${company}" method="POST">
+                        <input type="hidden" th:field="*{companyId}"/>
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{company.name.label}">Company Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control pull-right" th:field="*{companyName}" placeholder="Company Name" th:autofocus="autofocus"/>
+                            </div>
+                        </div>
+                        <div class="row form-group label-vertical-align-top">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{company.address.label}">Company Address</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control pull-right form-group" th:field="*{companyAddressLine1}" placeholder="Company Address Line 1"/>
+                                <input type="text" class="form-control pull-right" th:field="*{companyAddressLine2}" placeholder="Company Address Line 2"/>
+                            </div>
+                        </div>
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{company.contact.label}">Contact No.</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control pull-right" th:field="*{contactNo}" placeholder="Contact No."/>
+                            </div>
+                        </div>
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{company.email.label}">Email Address</label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control pull-right" th:field="*{email}" placeholder="Email Address"/>
+                            </div>
+                        </div>
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{company.web.label}">Web Address</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control pull-right" th:field="*{website}" placeholder="Web Address"/>
+                            </div>
+                        </div>
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{company.country.label}">Country</label>
+                            <div class="col-sm-9">
+                                <div>
+                                    <input type="text" id="country_selector" th:field="*{country}"/>
+                                    <label for="country_selector" style="display:none;"></label>
+                                </div>
+                                <div class="form-item" style="display:none;">
+                                    <input type="text" id="country_selector_code" name="country_selector_code" data-countrycodeinput="1" readonly="readonly" />
+                                    <label for="country_selector_code"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{company.financial.period.label}">Financial Period from</label>
+                            <div class="col-sm-3">
+                                <input type="date" class="form-control pull-right " th:field="*{financialPeriod}" placeholder="Financial Period From"/>
+                            </div>
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{company.accounts.start.on.label}">Accounts Start on</label>
+                            <div class="col-sm-3">
+                                <input type="date" class="form-control pull-right " th:field="*{accountsStartOn}" placeholder="Accounts Start On"/>
+                            </div>
+                        </div>
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{company.type.of.business.label}">Type of Business</label>
+                            <div class="col-sm-9">
+                                <select class="selectpicker form-control" th:field="*{typeOfBusiness}" data-live-search="true">
+                                    <option value="1">Sole Proprietorship</option>
+                                    <option value="2">Partnership</option>
+                                    <option value="3">Corporation</option>
+                                    <option value="4">Limited Liability Company</option>
+                                    <option value="5">Cooperative</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{company.sector.of.business.label}">Sector of Business</label>
+                            <div class="col-sm-9">
+                                <select class="selectpicker form-control" th:field="*{sectorOfBusiness}" data-live-search="true">
+                                    <option value="1">Bricks</option>
+                                    <option value="2">Coil Manufacturer</option>
+                                    <option value="3">Distributor</option>
+                                    <option value="4">Electric Manufacturer</option>
+                                    <option value="5">Feed Manufacturer</option>
+                                    <option value="6">Flour Manufacturer</option>
+                                    <option value="7">Foam Manufacturer</option>
+                                    <option value="8">Food Manufacturer</option>
+                                    <option value="9">Furniture</option>
+                                    <option value="10">Garment Brand Shop</option>
+                                    <option value="11">Garments</option>
+                                    <option value="12">Hair Manufacturer</option>
+                                    <option value="13">Herbal Products</option>
+                                    <option value="14">Hospital</option>
+                                    <option value="15">Hotel</option>
+                                    <option value="16">Importer</option>
+                                    <option value="17">Iron Processing</option>
+                                    <option value="18">IT Training</option>
+                                    <option value="19">Machine Import</option>
+                                    <option value="20">Media Training Institute</option>
+                                    <option value="21">Media Training Institute</option>
+                                    <option value="22">Merchant Bank</option>
+                                    <option value="23">Non Profit Organization</option>
+                                    <option value="24">Packaging</option>
+                                    <option value="25">Pharmaceuticals</option>
+                                    <option value="26">Plywood Manufacturer</option>
+                                    <option value="27">Poultry</option>
+                                    <option value="28">Power</option>
+                                    <option value="29">Property Developer</option>
+                                    <option value="30">Recruiting Agency</option>
+                                    <option value="31">Retail Garment Shop</option>
+                                    <option value="32">Ship Builder</option>
+                                    <option value="33">Shoe Manufacturer</option>
+                                    <option value="34">Steel Processing </option>
+                                    <option value="35">Telecom</option>
+                                    <option value="36">Theme Park</option>
+                                    <option value="37">Trading</option>
+                                    <option value="38">Tuition Provider</option>
+                                    <option value="39">Zipper Manufacturer</option>
+                                    <option value="40">Others</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{company.currency.name.label}">Currency Name</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control pull-right" th:field="*{currencyName}" placeholder="Currency Name"/>
+                            </div>
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{company.currency.symbol.label}">Currency Symbol</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control pull-right" th:field="*{currencySymbol}" placeholder="Currency Symbol"/>
+                            </div>
+                        </div>
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{company.decimal.part.name.label}">Decimal Part Name</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control pull-right" th:field="*{decimalPartName}" placeholder="Decimal Part Name"/>
+                            </div>
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{company.decimal.part.digit.label}">Decimal Part Digit</label>
+                            <div class="col-sm-3">
+                                <input type="number" class="form-control pull-right" th:field="*{decimalPartDigit}" placeholder="Decimal Part Digit"/>
+                            </div>
+                        </div>
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{company.digit.grouping.label}">Digit Grouping</label>
+                            <div class="col-sm-9">
+                                <select class="selectpicker form-control" th:field="*{digitGrouping}" data-live-search="true">
+                                    <option value="1">Thousand / Lakh (1,00,000)</option>
+                                    <option value="2">Million / Billion (100,000,000)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 right">
+                                <button th:if="${mode=='create'}" type="submit" class="btn btn-primary" th:text="#{default.button.create.label}">Save</button>
+                                <button th:if="${mode=='edit'}" type="submit" class="btn btn-primary" th:text="#{default.button.update.label}">Update</button>
+                                <a class="btn btn-primary" th:href="@{/company}" th:text="#{default.button.cancel.label}">List</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script th:src="@{/js/bootstrap-select.js}"></script>
+    </body>
+</html>

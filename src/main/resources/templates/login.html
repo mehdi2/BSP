@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel='shortcut icon' type='image/x-icon' th:href="@{/images/favicon.ico}"/>
+
+    <title th:text="#{auth.login.label}">Login</title>
+
+    <link th:href="@{/css/login.css}" type="text/css" rel="stylesheet"/>
+
+    <link th:href="@{/webjars/font-awesome/css/font-awesome.min.css}" rel="stylesheet"/>
+    <!--<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet"/>-->
+
+    <!--<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>-->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+</head>
+<body>
+
+
+<div style="height: 100px; width: 100%" class="visible-desktop"></div>
+
+<div class="container">
+
+    <div class="main-login main-center">
+
+        <div align="center" >
+            <img th:src="@{'/images/logo.png'}" th:width="100px" th:height="100px" />
+        </div>
+
+        <!--<h2 style="margin-bottom:20px" class="form-signin-heading" th:text="#{auth.login.label}"></h2>-->
+
+        <form th:action="@{/login}" method="POST" class="form-signin">
+
+            <div align="center" th:if="${param.error}" class="alert alert-danger"
+                 th:text="${session[SPRING_SECURITY_LAST_EXCEPTION]}">Error
+            </div>
+
+            <div align="center" th:if="${param.logout}" class="alert alert-success"
+                 th:text="#{auth.successfully.logout.label}">Successfully Logout
+            </div>
+
+            <div class="form-group">
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" name="username" id="username" class="form-control"
+                               th:placeholder="#{auth.username.label}" autocapitalize="off" spellcheck="false"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                        </span>
+                        <input type="password" name="password" id="password" class="form-control"
+                               th:placeholder="#{auth.password.label}" autocapitalize="off" spellcheck="false"/>
+                    </div>
+                </div>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input text="Remember Me" type="checkbox" name="remember-me" id="remember-me"
+                           th:text="#{auth.remember.me.label}"
+                            />
+                </label>
+            </div>
+
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+            <div class="form-group ">
+                <button class="btn btn-large btn-success btn-block" name="Submit" type="Submit"
+                        th:text="#{auth.login.label}"></button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+

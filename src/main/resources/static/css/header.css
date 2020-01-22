@@ -1,0 +1,28 @@
+
+
+/*==========================
+Header HTML Right Menu Bar Custome Edit By Tipu*/
+
+ul.dropdown-menu.dropdown-pull-right {
+    right: 0;
+    left: auto;
+}
+
+
+/*End Header HTML Right Menu Bar Custome Edit By Tipu
+==============================================*/
+
+
+/* Date Picker Style */
+span.input-group-addon {margin: 0; padding: 0px 12px;}
+#datepicker-menu :hover{cursor: pointer;}
+
+.datepicker-days {height: 230px;}
+table.table-condensed tfoot {
+    display: none;
+}
+.form-control-custome {
+    height: 24px;
+    text-align: center;
+}
+/* End Date Picker Style */

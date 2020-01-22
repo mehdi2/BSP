@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="main">
+<head>
+    <script th:src="@{/js/bootstrap-datepicker.js}"></script>
+    <title th:text="#{report.day.summery.title}">Day Summery</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-datepicker.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/report/statement/day-summery.css}"/>
+
+
+</head>
+<body>
+<div class="right_col" role="main" layout:fragment="content">
+    <div class="panel">
+        <div class="panel-heading one" th:text="#{report.day.summery.page.header}" >Day Summary</div>
+
+        <div class="panel-body bsp-voucher-type border-color">
+            <div class="statement-content" align="center">
+                <div class="row">
+                    <div class="col-sm-7">
+                        <div class="col-xs-5">
+                            <div id="date1" class="input-group date" data-date-format="dd-mm-yyyy">
+                                <input id="from" class="form-control form-control-custome" type="text" placeholder="dd-mm-yyyy" readonly="readonly"/>
+                                <span class="input-group-addon form-control-custome"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-1 custome-col-margin-to custome-col-margin">To</div>
+                        <div class="col-xs-5">
+                            <div id="date2" class="input-group date" data-date-format="dd-mm-yyyy">
+                                <input id="to" class="form-control form-control-custome" type="text" placeholder="dd-mm-yyyy" readonly="readonly" />
+                                <span class="input-group-addon form-control-custome"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group label-vertical-align table-responsive">
+                <table class="tableSection">
+                    <thead>
+                    <tr>
+                        <th class="th-sl">
+                            <div class="sl" >#SL</div>
+                        </th>
+                        <th class="th-voucher-type">
+                            <div class="voucher-type" >Voucher Type</div>
+                        </th>
+                        <th class="th-voucher-id">
+                            <div class="voucher-id" >Voucher ID</div>
+                        </th>
+                        <th class="th-voucher-date">
+                            <div class="voucher-date" >Voucher Date</div>
+                        </th>
+                        <th class="th-voucher-amount">
+                            <div class="voucher-amount" >Voucher Amount</div>
+                        </th>
+                        <th class="th-party-name">
+                            <div class="party-name" >Party Name</div>
+                        </th>
+                        <th class="th-purchase">
+                            <div class="purchase" >Purchase</div>
+                        </th>
+                        <th class="th-cost-center">
+                            <div class="cost-center" >Cost Center/Godwon</div>
+                        </th>
+                        <th class="th-reference">
+                            <div class="reference" >Reference</div>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody class="group-list">
+                    <tr th:each="voucher : ${Vouchers}" th:class="${voucherStat.even}? 'list-table-row'">
+                        <td class="td-sl" th:text="${voucherStat.count}"> </td>
+                        <td class="td-voucher-type" th:text="${voucher.voucherType.name}"> </td>
+                        <td class="td-voucher-id" th:text="${voucher.voucherNo}"> </td>
+                        <td class="td-voucher-date" th:text="${voucher.voucherDate}"> </td>
+                        <td class="td-voucher-amount" > </td>
+                        <td class="td-party-name"> </td>
+                        <td class="td-purchase"> </td>
+                        <td class="td-cost-center"> </td>
+                        <td class="td-reference"> </td>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/js/report/statement/statement.js}"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="main">
+<head>
+    <title th:text="#{accounts.transaction.voucher.title}">Accounting Vouchers</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="right_col" role="main">
+        <div class="panel panel-default">
+            <form action="/accountingVouchers/create" th:action="@{/accountingVouchers/create}" th:object="${accountsVoucherEntity}"
+                  method="POST">
+                <input type="hidden" id="VoucherTypeFlag" th:field="*{voucherTypeId}" th:value="${HiddenId}"/>
+                <input type="hidden" id="CountRow" th:value="${RowCount}"/>
+                <div class="panel-heading">
+                    <span class="voucher-type-color"
+                          th:text="${voucherTypeMode!= null} ? ${voucherTypeMode} : 'Accounting Voucher Creation'"></span>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label class="col-md-1 lblVoucherNo" th:text="'No.'"></label>
+                                <input id="voucher-id" tabindex="1" type="text"
+                                       class="form-control txtVoucherNo col-md-11" placeholder="Voucher No."
+                                       th:field="*{voucherNo}" th:value="${VoucherNo}" required="required"
+                                       th:readonly="readonly"/>
+                                <label class="control-label error" th:if="${#fields.hasErrors('voucherNo')}"
+                                       th:errors="*{voucherNo}">Last Edu Remarks Error</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <!--<input id="datepicker-voucher" type='text' placeholder="mm/dd/yyyy" class="form-control" th:field="*{voucherDate}" />-->
+                                    <input id="datepicker-voucher" type='text' placeholder="mm/dd/yyyy"
+                                           class="form-control" th:field="*{voucherDate}"/>
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th th:text="#{default.dr.cr}">Dr/Cr</th>
+                                    <th th:text="#{default.particulars.label}">Particulars</th>
+                                    <th th:text="#{default.debit.label}">Debit</th>
+                                    <th th:text="#{default.credit.label}">Credit</th>
+                                </tr>
+                            </thead>
+                            <tbody class="group-list">
+
+                            </tbody>
+                            <tr>
+                                <td class="width-7p"></td>
+                                <td class="width-70p">
+                                                             <textarea type="text" rows="3" cols="30"
+                                                                       class="form-control width-auto"
+                                                                       maxlength="2000" th:field="*{Narration}"
+                                                                       placeholder="Narration" />
+                                    <!--<label class="control-label error"-->
+                                           <!--th:if="${#fields.hasErrors('Narration')}"-->
+                                           <!--th:errors="*{Narration}">Last Edu Remarks Error</label>-->
+                                </td>
+                                <td class="width-11p"></td>
+                                <td class="margin-top">
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="width-7p"></td>
+                                <td class="width-70p"></td>
+                                <td class="width-11p">
+                                    <input id="debitTotalAmount" th:readonly="readonly" th:field="*{debitTotalAmount}"
+                                           tabindex="2" type="text" class="form-control width-77 margin-top"
+                                           maxlength="400"
+                                           placeholder="Total Amount" value="0.00"/>
+                                </td>
+                                <td class="margin-top">
+                                    <input id="creditTotalAmount" th:readonly="readonly" th:field="*{creditTotalAmount}"
+                                           tabindex="2" type="text" class="form-control width-77 margin-top"
+                                           maxlength="400"
+                                           placeholder="Total Amount" value="0.00"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="width-7p"></td>
+                                <td class="width-70p"></td>
+                                <td class="width-11p"></td>
+                                <td class="margin-top">
+                                    <button id="save" type="submit" class="btn btn-primary"
+                                            th:text="#{default.button.save.label}">Save
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </form>
+            <div class="panel-footer">
+                <div class="bottom-header">
+                    <div class="row no-gutters">
+                        <div class="owl-carousel owl-theme cp-list">
+                            <div th:each="AcVoucherType : ${AcVoucherTypes}">
+                                <div th:class="${voucherTypeMode==AcVoucherType.VoucherTypeName?'item active':'item'}">
+                                    <a th:href="@{/accountingVouchers/index/}+${AcVoucherType.VoucherTypeId}"
+                                       th:text="${AcVoucherType.VoucherTypeName}"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/js/accounts.voucher.js}"></script>
+</div>
+</body>
+</html>

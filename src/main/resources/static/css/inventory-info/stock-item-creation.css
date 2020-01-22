@@ -1,0 +1,143 @@
+/*==============
+Readonly input Field Background Color White
+=================*/
+
+input.form-control.form-control-custome.readonly-bg {
+    background: #fff !important;
+}
+/*==============
+Readonly input Field Background Color White End Section
+=================*/
+tfoot {
+    background: #f1f1f1;
+}
+
+tfoot td {
+    padding: 5px;
+    border-right-color: #cacaca;
+}
+
+tfoot:before {
+    line-height: 0em !important;
+}
+/*Table Heading Style*/
+table.tableSection thead {
+    background: #85d266;
+}
+table.tableSection thead th {
+    padding: 5px 0px;
+}
+
+table.tableSection thead th,table.tableSection thead td {
+    border-right: 1px solid #ededed;
+    color: #fff;
+}
+
+/* End Table Heading Style*/
+
+table.tableSection {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    word-wrap: break-word;
+    margin-bottom: 15px;
+}
+table.tableSection thead, table.tableSection tbody {
+    float: left;
+    width: 100%;
+}
+table.tableSection tbody {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 230px;
+}
+table.tableSection tr {
+    width: 100%;
+    display: table;
+    text-align: left;
+}
+table.tableSection th, table.tableSection td {
+    word-break: break-all;
+}
+.tableSection td input {
+    border: none;
+}
+/*Custome CSS Table Cell Width*/
+
+
+
+/*Table head and Table Data Area*/
+
+table.tableSection th.th-godwon, table.tableSection td.td-godwon {
+    width: 30%;
+}
+table.tableSection th.th-qty, table.tableSection td.td-qty {
+    width: 30%;
+}
+table.tableSection th.th-rate, table.tableSection td.td-rate {
+    width: 20%;
+}
+table.tableSection th.th-amount, table.tableSection td.td-amount {
+    width: 20%;
+}
+
+/* custome live search select picker for table cell one*/
+.table-select-1{
+    display: block !important;
+    margin-top: -12px;
+    border: none;
+}
+
+.table-select-1 {
+    position: absolute;
+    width: -webkit-calc(30% - 7px) !important;
+}
+
+
+
+/*.btn-group.bootstrap-select.form-control-custome.table-select-1 {*/
+/*display: block;*/
+/*}*/
+
+.table-select-1 button {
+    width: -webkit-calc(98% - 5px) !important;
+}
+
+
+.table-select-1 button{
+    height: 24px;
+    font-size: 13px;
+    padding: 0 12px;
+    border: none;
+}
+/* End custome live search select picker for table cell one*/
+
+
+
+.form-control {font-size:14px;margin: 0;padding-top: 0;padding-bottom: 0;}
+
+
+/*Custome Input Form-control*/
+.form-control-custome {
+    height: 24px;
+}
+.form-control-custome button{padding: 0px 12px;outline: none}
+
+
+
+
+/* Boostrap Live Search Style */
+button.btn.dropdown-toggle.btn-default {font-size: 14px;height: inherit;padding-top: 0px; outline: none !important;
+    border-radius: 3px;border-color: #ece9e9; background: none;}
+
+
+
+
+.acc-vouc-table{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.acc-vouc-table>thead>tr>th {
+    padding: 0px 20px;
+}
+/* End Top Section*/

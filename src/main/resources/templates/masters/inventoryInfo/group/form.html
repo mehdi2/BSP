@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="main">
+    <head>
+        <title th:text="#{inventory.group.title}">Inventory Group</title>
+    </head>
+    <body>
+        <div class="right_col" role="main" layout:fragment="content">
+            <div th:if="${msg.getDisplay()}" class="alert alert-danger fade in" >
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong th:text="${msg.message}"></strong>
+            </div>
+
+            <div class="panel">
+                <div class="panel-heading one" th:if="${mode=='create'}" th:text="#{inventory.group.creation.label}">Inventory Group Creation</div>
+                <div class="panel-heading one" th:if="${mode=='edit'}" th:text="#{inventory.group.alteration.label}">Inventory Group Alteration</div>
+
+                <div class="panel-body border-color">
+                    <form th:action="@{/stockGroup/}+${mode}" th:object="${InvGroup}" method="POST">
+                        <input type="hidden" th:field="*{id}"/>
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{inventory.group.name.label}">Group Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control pull-right" th:field="*{name}" placeholder="Group Name" th:autofocus="autofocus" th:required="required"/>
+                                <label class="control-label error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Full Name Error</label>
+                            </div>
+                        </div>
+
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{inventory.group.under.label}">Under</label>
+                            <div class="col-sm-9">
+                                <select class="selectpicker form-control" th:field="*{ParentCode}" data-live-search="true">
+                                    <!--<option value="1">Primary</option>-->
+                                    <option th:each="parent:${InvGroupList}" th:value="${parent.getId()}" th:text="${parent.getName()}"></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 right">
+                                <button th:if="${mode=='create'}" type="submit" class="btn btn-primary" th:text="#{default.button.create.label}">Save</button>
+                                <button th:if="${mode=='edit'}" type="submit" class="btn btn-primary" th:text="#{default.button.update.label}">Update</button>
+                                <a class="btn btn-primary" th:href="@{/stockGroup}" th:text="#{default.button.cancel.label}">List</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script th:src="@{/js/bootstrap-select.js}"></script>
+    </body>
+</html>

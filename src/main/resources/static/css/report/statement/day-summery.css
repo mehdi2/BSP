@@ -1,0 +1,110 @@
+
+.datePicker-head p {
+    background: #7baf66;
+    padding: 7px 0px 7px 10px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+.voucher-type {
+    margin: 0px;
+    padding: 0;
+}
+.form-control-custome {
+    height: 24px;
+    font-size: 0.9vw;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    cursor: pointer !important;
+    color: #000 !important;
+    background: #fff !important;
+}
+.form-control-custome button{
+    padding: 0px 12px;
+    outline: none
+}
+button.btn.dropdown-toggle.btn-default {font-size: inherit;height: inherit;padding-top: 0px; outline: none !important;}
+
+
+.statement-content {
+    margin-bottom: 10px;
+}
+
+
+/*table design*/
+
+/*tfoot:before {*/
+    /*line-height: 0em !important;*/
+/*}*/
+/*Table Heading Style*/
+table.tableSection thead {
+    background: #85d266;
+}
+table.tableSection thead th {
+    padding: 2px 0px;
+}
+
+table.tableSection thead th,table.tableSection thead td {
+    border-right: 1px solid #ededed;
+    color: #fff;
+}
+
+/* End Table Heading Style*/
+
+table.tableSection {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+table.tableSection thead, table.tableSection tbody {
+    float: left;
+    width: 100%;
+}
+table.tableSection tbody {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 230px;
+}
+table.tableSection tr {
+    width: 100%;
+    display: table;
+    text-align: left;
+}
+/*table.tableSection th, table.tableSection td {*/
+    /*word-break: break-all;*/
+/*}*/
+
+/*Custome CSS Table Cell Width*/
+
+
+
+
+/*Table head and Table Data Area*/
+table.tableSection th.th-sl, table.tableSection td.td-sl {
+    width: 7%;
+}
+table.tableSection th.th-voucher-type, table.tableSection td.td-voucher-type {
+    width: 12%;
+}
+table.tableSection th.th-voucher-id, table.tableSection td.td-voucher-id {
+    width: 10%;
+}
+table.tableSection th.th-voucher-date, table.tableSection td.td-voucher-date {
+    width: 10%;
+}
+table.tableSection th.th-voucher-amount, table.tableSection td.td-voucher-amount {
+    width: 15%;
+}
+table.tableSection th.th-party-name, table.tableSection td.td-party-name {
+    width: 12%;
+}
+table.tableSection th.th-purchase, table.tableSection td.td-purchase {
+    width: 12%;
+}
+table.tableSection th.th-cost-center, table.tableSection td.td-cost-center {
+    width: 12%;
+}
+table.tableSection th.th-reference, table.tableSection td.td-reference {
+    width: 10%;
+}

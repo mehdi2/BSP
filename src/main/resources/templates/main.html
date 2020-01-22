@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+	<head>
+		<meta charset="UTF-8"/>
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
+		<title>BSP ERP</title>
+
+
+
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/font-awesome/css/font-awesome.min.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/owl.carousel/2.2.1/dist/assets/owl.carousel.min.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/webjars/owl.carousel/2.2.1/dist/assets/owl.theme.default.min.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-select.min.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/countrySelect.min.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-datepicker.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-toggle.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/header.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+
+		<script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+		<script th:src="@{/js/main.js}"></script>
+
+
+
+	</head>
+
+	<body>
+		<div class="container-fluid">
+
+			<!-- Start Header -->
+			<header id="musthead">
+				<div th:replace="fragments/header :: top-header"></div>
+				<div th:replace="fragments/header :: bottom-header"></div>
+			</header>
+			<!-- End of Header -->
+
+			<!-- Start Body -->
+				<!--<div class="content-section">-->
+					<div class="row">
+						<div th:replace="fragments/verticalnav :: left-nav"></div>
+						<!-- Start Main Body Content -->
+						<div class="col-md-8 col-xs-8 col-8">
+							<div id="content" layout:fragment="content"></div>
+						</div>
+						<!-- End Main Body Content -->
+						<div th:replace="fragments/verticalnav :: right-nav"></div>
+					</div>
+				<!--</div>-->
+			<!-- End of Body -->
+
+		</div>
+
+		<script th:src="@{/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/countrySelect.min.js}"></script>
+		<script th:src="@{/webjars/owl.carousel/2.2.1/dist/owl.carousel.min.js}"></script>
+		<!--<script th:src="@{/js/bootstrap-select.js}"></script>-->
+		<script th:src="@{/js/bootstrap-select.min.js}"></script>
+		<script th:src="@{/js/bootstrap-toggle.js}"></script>
+		<script th:src="@{/js/bootstrap-datepicker.js}"></script>
+		<!--<script th:src="@{/js/main.js}"></script>-->
+
+	</body>
+</html>

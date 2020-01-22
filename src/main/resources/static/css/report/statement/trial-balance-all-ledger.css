@@ -1,0 +1,30 @@
+.rowspan-th{
+    position: relative;
+}
+span.rowspan-sec {
+    position: absolute;
+    margin-top: -40px;
+    margin-left: -40px;
+}
+.rep-date-area{
+    padding-top:15px;
+}
+.rep-date-area-from,.rep-date-area-to {
+    padding-left: 15px;
+    padding-bottom: 10px;
+}
+.rep-date{
+    padding: 0px;
+}
+
+.rep-date-to,.rep-date-from {
+    padding: 0px;
+    text-align: center;
+}
+.tableSection{padding:20px ;}
+.table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+    border-bottom-width: 0px !important;
+}
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+    border: 1px solid #a2a1a1 !important;
+}

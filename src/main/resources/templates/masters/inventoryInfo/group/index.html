@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="main">
+    <head>
+        <title th:text="#{inventory.group.title}">Inventory Group</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="body-content">
+                <div th:if="${msg.getDisplay()}" class="alert alert-danger fade in" >
+                    <!--<strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.-->
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong th:text="${msg.message}"></strong>
+                </div>
+                <div class="panel">
+                    <div class="panel-heading one index-page-header">
+                        <span th:text="#{inventory.group.list.title}"></span>
+                        <a th:href="@{/stockGroup/create}" class="btn btn-large btn-success">
+                            <span class="fa fa-plus" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <div class="panel-body list-table">
+                        <table class="table table-bordered" width="100%">
+                            <thead class="one">
+                                <th th:text="#{default.sl.no}">S.L</th>
+                                <th th:text="#{inventory.group.name.label}">Group Name</th>
+                                <th th:text="#{inventory.group.under.label}">Under</th>
+                                <!--<th th:text="#{inventory.group.type.label}">Type</th>-->
+                                <th th:text="#{default.action.label}" colspan="02">Action</th>
+                            </thead>
+                            <tbody>
+                                <div th:if="!${#lists.isEmpty(InvGroupList)}">
+                                    <tr th:each="group : ${InvGroupList}" th:class="${groupStat.even}? 'list-table-row'">
+                                        <td th:text="${groupStat.count}"></td>
+                                        <td th:text="${group.getName()}"></td>
+                                        <td th:text="${group.getUnder()}"></td>
+                                        <!--<td th:text="${group.getGroupTypeName()}"></td>-->
+                                        <td class="center">
+                                            <div class="btn-group" role="group" aria-label="...">
+                                                <a th:href="@{/stockGroup/edit/} + ${group.getId()}" class="btn btn-success">
+                                                    <span class="fa fa-pencil" aria-hidden="true"></span>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td class="center">
+                                            <div class="btn-group" role="group" aria-label="...">
+                                                <a th:href="@{/stockGroup/delete/} + ${group.getId()}" class="btn btn-danger">
+                                                    <span class="fa fa-trash" aria-hidden="true"></span>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </div>
+                                <div th:if="${#lists.isEmpty(InvGroupList)}">
+                                    <tr>
+                                        <td colspan="6">No Inventory Group exists!</td>
+                                    </tr>
+                                </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

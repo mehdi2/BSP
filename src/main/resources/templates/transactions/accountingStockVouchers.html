@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="main">
+    <head>
+        <title th:text="#{accounts.transaction.voucher.title}">Accounting Vouchers</title>
+        <script>
+            $(function () {
+                var date = $('#datepicker').datepicker({ dateFormat: 'dd-mm-yyyy', autoclose:'true' }).val();
+            });
+        </script>
+        <script th:src="@{/js/bootstrap-datepicker.js}"></script>
+        <script th:src="@{/js/accountingVauchers/attachment.js}"></script>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-datepicker.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/transections/accountingStockVouchers.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/transections/attachment.css}"/>
+
+    </head>
+    <body>
+        <div class="right_col" role="main" layout:fragment="content">
+                <div class="panel">
+                    <div class="panel-heading one" th:text="${voucherTypeMode!= null} ? ${voucherTypeMode} : 'Accounting Voucher  '+${AcVoucherType.name}">Account Voucher Creation</div>
+                    <div class="panel-body bsp-voucher-type">
+                        <form  id="form" th:action="@{/accountingStockVouchers/create/}" th:object="${Voucher}" method="POST">
+                            <input type="hidden" th:field="*{voucherType}" />
+                            <input type="hidden" id="eachNarration" th:value="${Voucher.voucherType.isNarration()}" />
+                            <input type="hidden" th:field="*{userCode}" />
+                            <input type="hidden" th:field="*{companyCode}" />
+                            <input type="hidden" th:field="*{actionDate}" value="2018/12/25" />
+                            <input type="hidden" th:field="*{voucherDate}" value="2018/12/25" />
+                            <input type="hidden" id="party" th:field="*{accountsVoucher[0].ledger.id}" />
+                            <input type="hidden" name="accountsVoucher[0].debitAmount" value="0.0" />
+                            <input type="hidden" id="purchase" th:field="*{accountsVoucher[1].ledger.id}" />
+                            <input type="hidden" name="accountsVoucher[1].creditAmount" value="0.0" />
+                            <input type="hidden" name="accountsVoucher[2].creditAmount" value="0.0" />
+
+                            <div class=""  align="justify">
+                                <div class="form-group row top-lvl">
+                                    <div class="col-sm-1 lbl">
+                                        <label th:text="#{accounts.transaction.voucher.purchase.no}">No.</label>
+                                    </div>
+                                    <div class="col-sm-3 inpt">
+                                        <input class="form-control form-control-custome bsp-tab" type="text" th:field="*{voucherNo}" placeholder="Batch No."/>
+                                    </div>
+                                    <div class="col-sm-1 lbl">
+                                        <label th:text="#{accounts.transaction.voucher.purchase.reference}">Reference</label>
+                                    </div>
+                                    <div class="col-sm-3 inpt">
+                                        <input class="form-control form-control-custome bsp-tab" type="text" th:field="*{reference}" placeholder="Reference"/>
+                                    </div>
+                                    <div class="col-sm-1 lbl">
+                                        <label th:text="#{accounts.transaction.voucher.purchase.date}">Date</label>
+                                    </div>
+                                    <div class="col-sm-3 inpt">
+                                        <div id="datepicker" class="input-group date" data-date-format="dd/mm/yyyy">
+                                            <input class="form-control form-control-custome bsp-tab" type="text" th:field="*{voucherDateText}" />
+                                            <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row top-lvl">
+                                    <div class="col-sm-1 lbl ">
+                                        <label th:text="#{accounts.transaction.voucher.purchase.partyac}">Party A/c</label>
+                                    </div>
+                                    <div class="col-sm-3 inpt">
+                                        <select class="selectpicker form-control form-control-custome" th:field="*{PartyAccountId}" data-live-search="true" data-live-search-style="startsWith" onchange="partyAcChangeEvent(this);">
+                                            <option value="">Select Party Name</option>
+                                            <option th:each="PartyName:${PartyNames}" th:value="${PartyName.getId()}" th:text="${PartyName.getName()}"></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-1 lbl ">
+                                        <label th:text="#{accounts.transaction.voucher.purchase.purchase}">Purchase</label>
+                                    </div>
+                                    <div class="col-sm-3 inpt">
+                                        <select class="selectpicker form-control form-control-custome" th:field="*{PurchaseLedgerId}" data-live-search="true" onchange="purchaseChangeEvent(this);">
+                                            <option value="">Select Purchase Ledger</option>
+                                            <option th:each="PurchaseLedger:${PurchaseLedgers}" th:value="${PurchaseLedger.getId()}" th:text="${PurchaseLedger.getName()}"></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-1 lbl ">
+                                        <label th:text="#{accounts.transaction.voucher.purchase.godown}">Godwon</label>
+                                    </div>
+                                    <div class="col-sm-3 inpt">
+                                        <select id="Godown" class="selectpicker form-control form-control-custome" data-live-search="true">
+                                            <option value="">Select Godown</option>
+                                            <option th:each="godown:${Godowns}" th:value="${godown.getId()}" th:text="${godown.getName()}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row form-group label-vertical-align table-responsive">
+                                    <table class="tableSection">
+                                        <thead>
+                                            <tr>
+                                                <th class="th-name">
+                                                    <div class="name" th:text="#{accounts.transaction.voucher.purchase.th.name}">Name</div>
+                                                </th>
+                                                <th class="th-code">
+                                                    <div class="code" th:text="#{accounts.transaction.voucher.purchase.th.code}">Code</div>
+                                                </th>
+                                                <th class="th-narration" th:if="*{voucherType.isNarration()==true}">
+                                                    <div class="narration" >Narration</div>
+                                                </th>
+                                                <th class="th-godwon">
+                                                    <div class="godwon" th:text="#{accounts.transaction.voucher.purchase.th.godown}">Godwon</div>
+                                                </th>
+                                                <th class="th-qty">
+                                                    <div class="qty" th:text="#{accounts.transaction.voucher.purchase.th.qty}">Qty</div>
+                                                </th>
+                                                <th class="th-rate">
+                                                    <div class="rate" th:text="#{accounts.transaction.voucher.purchase.th.rate}">Rate</div>
+                                                </th>
+                                                <th class="th-unit">
+                                                    <div class="unit" th:text="#{accounts.transaction.voucher.purchase.th.unit}">Unit</div>
+                                                </th>
+                                                <th class="th-amount">
+                                                    <div class="amount" th:text="#{accounts.transaction.voucher.purchase.th.amount}">Amount</div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="item-list">
+                                            <tr>
+                                                <td class="td-name">
+                                                    <select class="selectpicker form-control-custome table-select-1 name" data-live-search="true" th:field="*{inventoryVoucher[0].item.id}" onchange="selectItemCode(this);">
+                                                        <option value="" >Select Item Name</option>
+                                                        <option th:each="item:${items}" th:value="${item.getId()}" th:text="${item.isService()==true?item.getName()+' (Service)':item.getName()+' (Item)'}"></option>
+                                                    </select>
+                                                </td>
+                                                <td class="td-code">
+                                                    <select class="selectpicker form-control-custome table-select-2 code" data-live-search="true" onchange="selectItemName(this);">
+                                                        <option value="" >Select Item Code</option>
+                                                        <option th:each="item:${items}" th:value="${item.getId()}" th:text="${item.isService()==true?item.getCode()+' (Service Code)':item.getCode()+' (Item Code)'}"></option>
+                                                    </select>
+                                                </td>
+                                                <td class="td-narration" th:if="*{voucherType.isNarration()==true}">
+                                                    <input type="text" th:field="*{inventoryVoucher[0].narration}"  class="form-control form-control-custome form-width-bsp bsp-tab preventDefaultMe narration"/>
+                                                </td>
+                                                <td class="td-godwon">
+                                                    <select class="selectpicker form-control-custome table-select-3 godown" data-live-search="true" th:field="*{inventoryVoucher[0].godown.id}">
+                                                        <option value="">Select Godown</option>
+                                                        <option th:each="godown:${Godowns}" th:value="${godown.getId()}" th:text="${godown.getName()}"></option>
+                                                    </select>
+                                                </td>
+                                                <td class="td-qty">
+                                                    <input type="text" class="form-control form-control-custome qty" th:field="*{inventoryVoucher[0].quantity}" value="0" onClick="this.select();" onkeyup="calculation(this);"/>
+                                                </td>
+                                                <td class="td-rate">
+                                                    <input type="text" class="form-control form-control-custome rate" th:field="*{inventoryVoucher[0].rate}" value="0" onClick="this.select();" onkeyup="calculation(this);"/>
+                                                </td>
+                                                <td class="td-unit">
+                                                    <input type="text" class="form-control form-control-custome unit"/>
+                                                </td>
+                                                <td class="td-amount">
+                                                    <input type="text" class="form-control form-control-custome amount" value="0.0" readonly="readonly" th:field="*{inventoryVoucher[0].amount}" onkeyup="addRow(this);"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr >
+                                                <td class="td-total">
+                                                    <div class="total">
+                                                        <input type="text" readonly="true" placeholder="Sub-Total"  class="form-control-custome "/>
+                                                    </div>
+                                                </td>
+                                                <td class="td-sub-total item-total">
+                                                    <input type="text" th:field="*{accountsVoucher[1].debitAmount}" readonly="true" value="0.00"  class="form-control-custome "/>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                    <!--
+                                    ==========================
+                                    Table Area 2 Starting Here-->
+
+                                    <table class="tableSection tableSection2">
+                                        <thead>
+                                        <tr>
+                                            <th class="th-name">
+                                                <div class="name" th:text="#{accounts.transaction.voucher.purchase.th.name}">Name</div>
+                                            </th>
+                                            <th class="th-qty-table2">
+                                                <div class="qty-table2"></div>
+                                            </th>
+                                            <th class="th-rate">
+                                                <div class="rate" th:text="#{accounts.transaction.voucher.purchase.th.rate}">Rate</div>
+                                            </th>
+                                            <th class="th-unit">
+                                                <div class="unit"></div>
+                                            </th>
+                                            <th class="th-amount">
+                                                <div class="amount" th:text="#{accounts.transaction.voucher.purchase.th.amount}">Amount</div>
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="ledger-list">
+                                        <tr>
+                                            <td class="td-name">
+                                                <select class="selectpicker form-control-custome table-select-1 name" th:field="*{accountsVoucher[2].ledger.id}" data-live-search="true">
+                                                    <option value="" >Select Additional Ledger </option>
+                                                    <option th:each="AdditionalLedger:${AdditionalLedgers}" th:value="${AdditionalLedger.getId()}" th:text="${AdditionalLedger.getName()}"></option>
+                                                </select>
+                                            </td>
+
+                                            <td class="td-qty-table2">
+                                                <div class="qty-table2">
+
+                                                </div>
+                                            </td>
+                                            <td class="td-rate">
+                                                <input type="text" class="form-control form-control-custome rate" onclick="this.select();" onkeyup="calculation(this);"/>
+                                            </td>
+                                            <td class="td-unit">
+                                                <div class="unit">
+
+                                                </div>
+                                            </td>
+                                            <td class="td-amount">
+                                                <input type="text" class="form-control form-control-custome amount" th:field="*{accountsVoucher[2].debitAmount}" value="0.00"  readonly="readonly" onkeyup="addRow(this);"/>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr >
+                                                <td class="td-total">
+                                                    <div class="total">
+                                                        <input type="text" readonly="true" placeholder=" Sub-Total"  class="form-control-custome "/>
+                                                    </div>
+                                                </td>
+                                                <td class="td-sub-total ledger-total">
+                                                    <input type="text" readonly="true" value="0.00"  class="form-control-custome "/>
+                                                </td>
+                                            </tr>
+                                            <tr >
+                                            <td class="td-total-final-narration">
+                                                <input type="text"  placeholder="Narration"  class="form-control-custome "/>
+                                            </td>
+                                            <td class="td-total-final">
+                                                <div class="total">
+                                                    <input type="text" readonly="true" placeholder="Total"  class="form-control-custome "/>
+                                                </div>
+                                            </td>
+                                            <td class="td-all-total">
+                                                <input type="text" th:field="*{accountsVoucher[0].creditAmount}" readonly="true" value="0.00"  class="form-control-custome "/>
+                                            </td>
+                                        </tr>
+                                            <tr>
+                                                <td class="attachment-area">
+                                                    <div class="attachment">
+                                                        <form id="myForm" method="post">
+                                                            <div class="file_input">
+                                                                <div class="row">
+                                                                    <div class="left-section col-lg-3">
+                                                                        <div class="heading">
+                                                                            <h4 class="h4_text"><p> Upload Files <sup>Max 5</sup> </p></h4>
+                                                                            <label class="fileContainer">
+                                                                                <img class="upload-logo" th:src="@{../images/upload.png}" />
+                                                                                <p class="upload_text"> Choice Files</p>
+                                                                                <!--<input type="file" id="files" name="files"  multiple> -->
+                                                                                <input id="files" type="file" name="files[]"  multiple="multiple" title=" " accept="image/*,.pdf,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+                                                text/plain" />
+                                                                            </label>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                    <div class="right-section col-lg-9">
+                                                                        <div id="scroller" class="show_images">
+                                                                            <div id="selectedFiles">
+                                                                                <!-- <span class="tooltiptext">Click image to Remove</span>
+                                                                                Extension <input id='extension' type='text' name='extension'> -->
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="total-amount-area">
+                                            <td class=" submit-btn">
+                                                <div class="pull-right">
+                                                    <button type="button" id="save" class="btn btn-primary">Save</button>
+                                                    <button type="reset" class="btn btn-primary">Cancel</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+
+                                    <!-- ========================
+                                    Table Area 2 Ending Here-->
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+                <script th:src="@{/js/accounts.stock.voucher.js}"></script>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,21 @@
+CREATE TABLE PERSISTENT_LOGINS
+(
+  USERNAME   VARCHAR2(64 BYTE)                  NOT NULL,
+  SERIES     VARCHAR2(64 BYTE)                  NOT NULL,
+  TOKEN      VARCHAR2(64 BYTE)                  NOT NULL,
+  LAST_USED  TIMESTAMP(6)                       NOT NULL
+)
+LOGGING
+NOCOMPRESS
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+--  There is no statement for index R_SYS.SYS_C00329036.
+--  The object is created when the parent object is created.
+
+ALTER TABLE PERSISTENT_LOGINS ADD (
+  PRIMARY KEY
+  (SERIES)
+  ENABLE VALIDATE);

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="main">
+    <head>
+        <title th:text="#{inventory.unit.title}">Unit of Measure</title>
+    </head>
+    <body>
+        <div class="right_col" role="main" layout:fragment="content">
+            <div th:if="${msg.getDisplay()}" class="alert alert-danger fade in" >
+                <!--<strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.-->
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong th:text="${msg.message}"></strong>
+            </div>
+            <div class="panel">
+                <div class="panel-heading one" th:if="${mode=='create'}" th:text="#{inventory.unit.of.measure.creation.label}">Unit of Measure Creation</div>
+                <div class="panel-heading one" th:if="${mode=='edit'}" th:text="#{inventory.unit.of.measure.alteration.label}">Unit of Measure Alteration</div>
+
+                <div class="panel-body border-color">
+                    <form th:action="@{/unit/}+${mode}" th:object="${unit}" method="POST">
+                        <input type="hidden" th:field="*{Id}"/>
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{inventory.unit.type.label}">Unit Type</label>
+                            <div class="col-sm-9">
+                                <select class="selectpicker form-control" th:field="*{unitType}" data-live-search="true" th:autofocus="autofocus">
+                                    <option value="1">Simple</option>
+                                    <option value="2">Compound</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{inventory.unit.symbol.label}">Unit Symbol</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control pull-right" th:field="*{unitSymbol}" placeholder="Unit Symbol"/>
+                            </div>
+                        </div>
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{inventory.unit.formal.name.label}">Formal Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control pull-right" th:field="*{formalName}" placeholder="Formal Name" />
+                            </div>
+                        </div>
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{inventory.unit.number.of.decimal.place.label}">Number Of Decimal Place</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control pull-right" th:field="*{NumberOfDecimalPlace}" placeholder="Number Of Decimal Place"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 right">
+                                <button th:if="${mode=='create'}" type="submit" class="btn btn-primary" th:text="#{default.button.create.label}">Save</button>
+                                <button th:if="${mode=='edit'}" type="submit" class="btn btn-primary" th:text="#{default.button.update.label}">Update</button>
+                                <a class="btn btn-primary" th:href="@{/unit}" th:text="#{default.button.cancel.label}">List</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script th:src="@{/js/bootstrap-select.js}"></script>
+    </body>
+</html>

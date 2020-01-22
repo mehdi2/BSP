@@ -1,0 +1,11 @@
+.toggle-off.btn {
+    width: 50%;
+}
+.toggle-on.btn {
+    width: 50%;
+}
+.toggle.btn {
+    width: 100% !important;
+    min-height: 100%;
+}
+

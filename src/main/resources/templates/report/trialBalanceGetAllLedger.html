@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="main">
+    <head>
+        <title th:text="#{report.trial.balance.ledger.label}">Trail Balance</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/report/statement/trial-balance-all-ledger.css}"/>
+    </head>
+    <body>
+    <div class="right_col" role="main" layout:fragment="content">
+        <div class="panel">
+            <div class="panel-heading one"> Trail Balance Get all Ledger </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8 col-xs-12 rep-date-area ">
+                        <div class="col-md-2 col-xs-2 rep-date-from">From</div>
+                        <div class="col-md-4 col-xs-4 rep-date-area-from">
+                            <div class="col-md-12 col-xs-12 rep-date">
+                                <div id="date1" class="input-group date " data-date-format="dd/mm/yyyy">
+                                    <input class="form-control bsp-tab form-control-custome" type="text" />
+                                    <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-xs-2 rep-date-to">To</div>
+                        <div class="col-md-4 col-xs-4 rep-date-area-to">
+                            <div class="col-md-12 col-xs-12 rep-date">
+                                <div id="date2" class="input-group date " data-date-format="dd/mm/yyyy">
+                                    <input class="form-control bsp-tab form-control-custome" type="text" />
+                                    <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-12 tableSection">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th rowspan="2" colspan="1" class="rowspan-th" ><span class="rowspan-sec">Ledger Name</span></th>
+                                <th rowspan="1" colspan="2">Openning</th>
+                                <th rowspan="1" colspan="2" > Transections</th>
+                                <th rowspan="1" colspan="2" >Closing</th>
+                            </tr>
+                            <tr>
+                                <th>Dr.</th>
+                                <th>Cr.</th>
+
+                                <th>Dr.</th>
+                                <th>Cr.</th>
+
+                                <th>Dr.</th>
+                                <th>Cr.</th>
+                            </tr>
+                            </thead>
+                            <tbody class="group-list">
+                            <tr>
+                                <td>test name</td>
+                                <td>100</td>
+                                <td>40</td>
+                                <td>200</td>
+                                <td>80</td>
+                                <td>98</td>
+                                <td>230</td>
+                            </tr>
+                            <tr>
+                                <td>test name</td>
+                                <td>100</td>
+                                <td>40</td>
+                                <td>200</td>
+                                <td>80</td>
+                                <td>98</td>
+                                <td>230</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+    </body>
+</html>

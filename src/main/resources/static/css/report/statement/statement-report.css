@@ -1,0 +1,50 @@
+
+.form-control-custome {
+    height: 24px;
+    font-size: 0.9vw;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    cursor: pointer !important;
+}
+table.table-condensed tfoot {
+    display: none;
+}
+/*span.filter-option.pull-left {*/
+    /*margin-top: 3px;*/
+/*}*/
+.form-control-custome button {
+    padding: 0px 12px;
+}
+
+button.btn.dropdown-toggle.btn-default {font-size: inherit;height: inherit;padding-top: 0px; outline: none !important;}
+
+.datepicker-days {height: 230px;}
+/* Header Design*/
+.datePicker-head {
+    padding: 5px;
+    background: #7baf66;
+    color: #fff;
+    font-weight: 600;
+    font-family: Montserrat-Medium;
+    padding-top: 10px;
+    padding-bottom: 1px;
+}
+.statement-content {
+    margin-top: 5px;
+    margin-bottom: 40px;
+}
+
+/* Custome Column margin-padding-width*/
+.custome-col-margin {
+    margin: 0;
+    padding: 0;
+}
+.custome-col-margin-to {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.custome-col-margin-ledger {
+    margin-left: 0px;
+    margin-right:0px;
+}

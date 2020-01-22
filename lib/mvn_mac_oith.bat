@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile=oith.jar -DgroupId=oith -DartifactId=oith -Dversion=1.0 -Dpackaging=jar

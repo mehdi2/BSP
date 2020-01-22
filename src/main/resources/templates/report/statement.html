@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="main">
+    <head>
+        <script th:src="@{/js/bootstrap-datepicker.js}"></script>
+
+        <title th:text="#{report.ledger.statement.title}">Ledger Voucher</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-datepicker.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/report/statement/statement-table.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/report/statement/statement-report.css}"/>
+
+
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="body-content">
+                <div class="right_col" role="main">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="datePicker-head">
+                                <p th:text="#{report.ledger.statement.page.header}">Statement Report</p>
+                            </div>
+                            <div class="statement-content" align="center">
+                                <div class="col-xs-3">
+                                    <div id="date1" class="input-group date" data-date-format="dd-mm-yyyy">
+                                        <input id="from" class="form-control form-control-custome" type="text" placeholder="dd-mm-yyyy" readonly="readonly"/>
+                                        <span class="input-group-addon form-control-custome"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-1 custome-col-margin-to custome-col-margin">To</div>
+                                <div class="col-xs-3">
+                                    <div id="date2" class="input-group date" data-date-format="dd-mm-yyyy">
+                                        <input id="to" class="form-control form-control-custome" type="text" placeholder="dd-mm-yyyy" readonly="readonly" />
+                                        <span class="input-group-addon form-control-custome"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-1 custome-col-margin custome-col-margin-ledger">Ledger</div>
+                                <div class="col-xs-4">
+                                    <select id="LedgerId" class="selectpicker form-control particular form-control-custome" data-live-search="true">
+                                        <option th:each="ledger : ${ledgers}" th:value="${ledger.getId()}" th:text="${ledger.getName()}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Table Design Area-->
+                            <div class="wrap-table100">
+                                <div class="table100 tbl m-b-110">
+                                    <table data-vertable="tbl">
+                                        <thead>
+                                        <tr class="row100 head">
+                                            <th th:text="#{report.ledger.statement.table.head.Date}" class="column100 column1" data-column="column1">Date</th>
+                                            <th th:text="#{report.ledger.statement.table.head.Particulars}" class="column100 column2" data-column="column2">Particulars </th>
+                                            <th th:text="#{report.ledger.statement.table.head.voucher.type}" class="column100 column2" data-column="column2">Particulars </th>
+                                            <th th:text="#{report.ledger.statement.table.head.voucher.number}" class="column100 column2" data-column="column2">Particulars </th>
+                                            <th th:text="#{report.ledger.statement.table.head.Debit}" class="column100 column6" data-column="column6">Debit</th>
+                                            <th th:text="#{report.ledger.statement.table.head.Credit}" class="column100 column7" data-column="column7">Creadit</th>
+                                            <th th:text="#{report.ledger.statement.table.head.Balance}" class="column100 column5" data-column="column5">Balance</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <!--<tr class="row100">-->
+                                            <!--<td class="column100 column1" data-column="column1">20/12/1980</td>-->
+                                            <!--<td class="column100 column2" data-column="column2">Demo</td>-->
+                                            <!--<td class="column100 column3" data-column="column3">I-Phone</td>-->
+                                            <!--<td class="column100 column5" data-column="column5">25675</td>-->
+                                            <!--<td class="column100 column6" data-column="column6">20000</td>-->
+                                        <!--</tr>-->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- Table Design Area End -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script th:src="@{/js/report/statement/statement.js}"></script>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="main">
+    <head>
+        <title th:text="#{inventory.Unit.measure.title}">Unit of Measure</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="body-content">
+                <div th:if="${msg.getDisplay()}" class="alert alert-danger fade in" >
+                    <!--<strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.-->
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong th:text="${msg.message}"></strong>
+                </div>
+                <div class="panel">
+                    <div class="panel-heading one index-page-header">
+                        <span th:text="#{inventory.unit.measure.list.label}"></span>
+                        <a th:href="@{/unit/create}" class="btn btn-large btn-success">
+                            <span class="fa fa-plus" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <div class="panel-body list-table">
+                        <table class="table table-bordered" width="100%">
+                            <thead class="one">
+                                <th th:text="#{default.sl.no}">S.L.</th>
+                                <th th:text="#{inventory.unit.name.label}">Unit Name</th>
+                                <th th:text="#{inventory.unit.symbol.label}">Unit Symbol</th>
+                                <th th:text="#{inventory.unit.type.label}">Unit Type</th>
+                                <th th:text="#{default.action.label}" colspan="02">Action</th>
+                            </thead>
+                            <tbody>
+                                <div th:if="!${#lists.isEmpty(units)}">
+                                    <tr th:each="unit : ${units}" th:class="${unitStat.even}? 'list-table-row'">
+                                        <td th:text="${unitStat.count}"></td>
+                                        <td th:text="${unit.formalName}"></td>
+                                        <td th:text="${unit.unitSymbol}"></td>
+                                        <td th:text="${unit.unitType==1?'Simple':'Compound'}"></td>
+                                        <td class="center">
+                                            <div class="btn-group" role="group" aria-label="...">
+                                                <a th:href="@{/unit/edit/} + ${unit.id}" class="btn btn-success">
+                                                    <span class="fa fa-pencil" aria-hidden="true"></span>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td class="center">
+                                            <div class="btn-group" role="group" aria-label="...">
+                                                <a th:href="@{/unit/delete/} + ${unit.id}" class="btn btn-danger">
+                                                    <span class="fa fa-trash" aria-hidden="true"></span>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </div>
+                                <div th:if="${#lists.isEmpty(units)}">
+                                    <tr>
+                                        <td colspan="6">No Unit of Measure exists!</td>
+                                    </tr>
+                                </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

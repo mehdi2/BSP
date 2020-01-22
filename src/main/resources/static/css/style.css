@@ -1,0 +1,247 @@
+.nav .navbar-nav a:hover{height:30px;}
+.col-sm-10{height:30px;}
+.navbar-nav > li > a, .navbar-brand {padding-top:5px !important; padding-bottom:0 !important; height: 30px;}
+.navbar {min-height:30px !important;}
+.topnav {overflow: hidden; background-color: #333;}
+.topnav a {float: left;display: block;text-align: center;padding: 14px 16px;font-size: 17px;}
+.topnav a:hover {color: black;}
+.topnav a:active {background-color:#000000;color:black;}
+.nav-custom{display: inline-flex;}
+.one{background-color:#a7db92;
+    /*edit cm-mehdi*/
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 2px;
+}
+.list-table{padding:0px;}/*margin-top:2px;*/
+.list-table-row{background-color:#dff0d8;}
+
+
+
+
+
+/*----------------------custom edit me------------------------------------*/
+.panel{border: 1px solid #ddd}
+th {text-align: center;}
+/*.border-color {border:1px solid #ddd;}*/
+.right {text-align: right;}
+.center {text-align: center;}
+.index-page-header {padding: 3px 15px;}
+
+/*Company Bar*/
+.item {text-align: center;border: outset 2px;border-radius: 5px;cursor: pointer;}
+.item a{text-decoration: none;}.item a:hover{text-decoration: none;}
+.item.active {text-align: center;background-color: #a7db92;border-radius: 5px;cursor: pointer;}
+.item.active a{text-decoration: none;}.item.active a:hover{text-decoration: none;}
+
+
+.bsp-table>tbody>tr>td, .bsp-table>tbody>tr>th, .bsp-table>tfoot>tr>td, .bsp-table>tfoot>tr>th, .bsp-table>thead>tr>td, .bsp-table>thead>tr>th{
+    padding: 0px;
+}
+
+.pull-center{ text-align: center; vertical-align: middle; }
+
+
+
+/*     Edited By Arafin           */
+
+.bsp-erp-logo{font-family:stop; font-size:35px;margin-left:-15px;}
+
+.dropdown-menu a:hover{background-color:red;}
+
+.nav .navbar-nav a:hover{height:30px;}
+
+.col-sm-10{height:30px;}
+
+.navbar-nav > li > a, .navbar-brand {padding-top:5px !important; padding-bottom:0 !important; height: 35px;}
+
+.navbar {min-height:35px !important;}
+
+.topnav {overflow: hidden; background-color: #333;}
+
+.topnav a {float: left;display: block;text-align: center;padding: 14px 16px;font-size: 17px;}
+
+.topnav a:hover {color: black;}
+
+.topnav a:active {background-color:#000000;color:black;}
+
+.one{background-color:#a7db92;}
+
+.company-list-table{padding:0px;margin-top:2px;}
+
+.company-list-table-row{background-color:#dff0d8;}
+
+.checkbox-align{margin:-9px -116px}
+
+.head-text-align{margin-top:09px}
+
+.form-width{width:130px; border:0px; height:24px;}
+
+.form-width-narration{border:0px;}
+
+.form-width-total{width:330px;border-style: double;border-left:0px;border-right:0px; border-top:1px solid black; border:0px;}
+
+td {text-align: center;border: 0.5px double #ece9e9;}
+
+td input {width: 100%;}
+
+/*tfoot:before { content: "-"; display: block; line-height: 0em; color: transparent; position:relative; }*/
+
+.form-width-bsp{border: 0px; height: 24px;}
+
+/*
+padding:10px 5px 15px 20px;
+    top padding is 10px
+    right padding is 5px
+    bottom padding is 15px
+    left padding is 20px
+    */
+/*..panel-body{padding: 0px 15px 15px 15px;}*/
+.bsp-voucher-type{padding: 10px 15px 15px 15px;}
+
+.bsp-file-style{border: solid; list-style-type: none;}
+
+.bsp-center{text-align: center;}
+.bsp-left{text-align: left;}
+.bsp-right{text-align: right;}
+
+.hide{display: none;}
+.show{display: block;}
+
+label {
+    margin: 0;
+    width: 100%;
+    font-weight: normal;
+}
+
+/*Search or Input box custome css , use only this class[ form-control-custome ]*/
+
+button.btn.dropdown-toggle.btn-default {
+    font-size: 14px;
+    height: inherit;
+}
+input#search-input {
+    margin-bottom: 5px;
+}
+
+.form-control:focus {
+    outline: none;
+    transition: none;
+    -webkit-box-shadow: none;
+}
+
+button.btn.dropdown-toggle.btn-default {
+    font-size: 14px;
+    height: inherit;
+    padding-top: 0px;
+    outline: none !important;
+    border: none;
+    background: none !important;
+}
+
+
+button.btn.dropdown-toggle.bs-placeholder.btn-default,button.btn.dropdown-toggle.bsp-tab.btn-default,
+button.btn.dropdown-toggle.btn-default,.dropdown-toggle.btn-default:hover{
+    background: none;
+    -webkit-box-shadow: none;
+    border: none;
+}
+
+button.btn.dropdown-toggle.bs-placeholder.btn-default :hover,button.btn.dropdown-toggle.bsp-tab.btn-default:hover,
+.bootstrap-select.btn-group :hover{
+    color: #c73e3e;
+}
+
+.bootstrap-select.btn-group .dropdown-toggle .caret {
+    right: 5px;
+}
+.bootstrap-select.btn-group .dropdown-toggle .filter-option {
+    text-align: center;
+}
+
+/*Report panel Custom Design BY Tipu*/
+
+.categories{
+    position: absolute;
+    width: -webkit-fill-available;
+    right: 40px;
+    width: 85%;
+
+}
+.link_1,.link_2{
+    display: none;
+}
+.main{
+    float:right
+}
+
+/* Report panel Custom Design BY Tipu
+=======================================*/
+
+div#cat_icon {
+    position: absolute;
+    right: 0px;
+}
+
+div#cat_icon i {
+    writing-mode: tb-rl;
+    display: flex;
+    font-size: 18px;
+    border: 1px solid;
+    padding: 9px;
+    color: #0dad0d;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.report-panel-design i {
+    display: flex;
+    font-size: 18px;
+    border: 1px solid;
+    padding: 9px;
+    color: #0dad0d;
+    cursor: pointer;
+    padding-bottom: 0px;
+}
+.report-panel-title-fade-in{
+    padding-top: 15px;
+}
+.report-panel-title-fade-out{
+    padding-left: 15px;
+}
+span.report-panel-title-fade-out p sup {
+    color: red;
+}
+
+.right-nav-area {
+    max-height: 285px;
+    overflow-y: scroll;
+    padding: 5px;
+}
+
+.right-nav-area::-webkit-scrollbar {
+    width: 5px;
+}
+.right-nav-area::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.right-nav-area::-webkit-scrollbar-thumb {
+    background: #0dad0d;
+}
+
+/*Custome Date Picker*/
+
+.datepicker.dropdown-menu{
+    min-width: 15% !important;
+}
+table.table-condensed {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+/*==============================
+ END Report panel Custom Design BY Tipu*/
+
+/*Toggle Button*/
+.toggle-on.btn,.toggle-off.btn{
+    width: 50%;
+}

@@ -1,0 +1,202 @@
+#selectedFiles img {
+    width: 45px;
+    height: 45px;
+    border-radius:25px;
+}
+input[type=file]{
+    color:transparent;
+}
+
+
+.heading li {
+    display: inline-block;
+    list-style: none;
+    margin-bottom: -8px;
+    margin-left: -8px;
+}
+
+.heading h4 p {
+    margin: 0;
+}
+
+.file_input .row {
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 10px;
+}
+.file_input {
+    background: #71b954;
+    color: #fff;
+    border-radius: 8px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+img {
+    vertical-align: bottom;
+}
+.h4_text {
+    margin-top: 3px;
+    margin-bottom: 0px;
+}
+
+.left-section {
+    margin-right: 15px;
+    margin-left: 4px;
+    /* box-shadow: inset 0 0 7px 2px; */
+    width: 20%;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    background: #3f6f2b;
+    border-radius: 6px;
+}
+.right-section{
+    overflow-x: auto;
+    overflow-y:hidden;
+    white-space: nowrap;
+}
+#scroller {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+
+.image-area {
+    background: #0009;
+    margin: 6px 5px 0px 5px;
+    border-radius: 6px;
+    display: inline-block;
+    width: 19%;
+    margin-left: auto;
+}
+
+.image-area li {
+    list-style: none;
+    margin: 0px 6px;
+    display: inline-grid;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+.img_text {
+    padding-bottom: 5px;
+    margin-bottom: 0;
+    color: #efefef;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: initial;
+    word-break: break-all;
+    white-space: normal;
+    line-height: 0.7;
+}
+.heading h4 {
+
+    font-size: 16px;
+    font-weight: 700;
+    font-family: initial;
+
+}
+
+
+.fileContainer {
+    overflow: hidden;
+    position: relative;
+}
+
+.fileContainer [type=file] {
+    cursor: inherit;
+    display: block;
+    font-size: 999px;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+}
+
+/* Example stylistic flourishes */
+
+.fileContainer {
+
+    padding: 5px;
+}
+
+.fileContainer [type=file] {
+    cursor: pointer;
+}
+
+/* Browse Image Custome Design*/
+
+.upload-logo{
+    height:35px;
+    width: 40px;
+}
+.upload_text {
+
+    display: unset;
+    font-family: initial;
+
+}
+
+
+
+
+/*Close Button*/
+.close-btn {
+    height: 25;
+    width: 25px;
+    float: right;
+    margin-left: -24px;
+    cursor: pointer;
+}
+
+p.close-btn:hover {
+    color: red;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 25px;
+    transition: 0.5s;
+}
+
+
+
+/* Custome Design Scrollbar */
+/* width */
+table.tableSection tbody::-webkit-scrollbar {
+
+    height:10px;
+    width: 5px;
+}
+
+/* Track */
+table.tableSection tbody::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+table.tableSection tbody::-webkit-scrollbar-thumb {
+    background: #62c9ba;;
+}
+
+/* Handle on hover */
+table.tableSection tbody::-webkit-scrollbar-thumb:hover {
+    background: #47ac9d;
+}
+
+td.attachment-area {
+    text-align: left;
+}
+.submit-btn .pull-right {
+    margin-right: 14px;
+}
+tr.total-amount-area {
+    margin-top: 25px;
+    border: hidden;
+}

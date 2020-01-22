@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="main">
+    <head>
+        <title th:text="#{inventory.service.item.title}">Inventory Service Item</title>
+    </head>
+    <body>
+        <div class="right_col" role="main" layout:fragment="content">
+            <div th:if="${msg.getDisplay()}" class="alert alert-danger fade in" >
+                <!--<strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.-->
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong th:text="${msg.message}"></strong>
+            </div>
+            <div class="panel">
+                <div class="panel-heading one" th:if="${mode=='create'}" th:text="#{inventory.service.item.creation.label}">Service Item Creation</div>
+                <div class="panel-heading one" th:if="${mode=='edit'}" th:text="#{inventory.service.item.alteration.label}">Service Item Alteration</div>
+
+                <div class="panel-body border-color">
+                    <form th:action="@{/service/}+${mode}" th:object="${item}" method="POST">
+                        <input type="hidden" th:field="*{id}"/>
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{inventory.service.item.code.label}">Item Code</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control pull-right" th:field="*{code}" placeholder="Item Code" th:autofocus="autofocus"/>
+                            </div>
+                        </div>
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{inventory.service.item.name.label}">Item Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control pull-right" th:field="*{name}" placeholder="Item Name"/>
+                            </div>
+                        </div>
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{inventory.service.item.under.label}">Under</label>
+                            <div class="col-sm-9">
+                                <select class="selectpicker form-control" th:field="*{group}" data-live-search="true">
+                                    <option th:each="parent:${groups}" th:value="${parent.getId()}" th:text="${parent.getName()}"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{inventory.service.item.unit.label}">Unit</label>
+                            <div class="col-sm-9">
+                                <select class="selectpicker form-control" th:field="*{unit}" data-live-search="true">
+                                    <option th:each="unit:${units}" th:value="${unit.getId()}" th:text="${unit.getUnitSymbol()}"></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 right">
+                                <button th:if="${mode=='create'}" type="submit" class="btn btn-primary" th:text="#{default.button.create.label}">Save</button>
+                                <button th:if="${mode=='edit'}" type="submit" class="btn btn-primary" th:text="#{default.button.update.label}">Update</button>
+                                <a class="btn btn-primary" th:href="@{/service}" th:text="#{default.button.cancel.label}">Cancel</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <script th:src="@{/js/bootstrap-select.js}"></script>
+            <script th:src="@{/js/inventory-item.js}"></script>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,219 @@
+
+tfoot:before {
+    line-height: 0em !important;
+}
+/*Table Heading Style*/
+table.tableSection thead {
+    background: #85d266;
+}
+table.tableSection thead th {
+    padding: 2px 0px;
+}
+
+table.tableSection thead th,table.tableSection thead td {
+    border-right: 1px solid #ededed;
+    color: #fff;
+}
+
+.top-cost-center {
+    max-width: fit-content;
+}
+.top-date {
+    padding-right: 0px;
+}
+
+/* End Table Heading Style*/
+
+table.tableSection {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+table.tableSection thead, table.tableSection tbody {
+    float: left;
+    width: 100%;
+}
+table.tableSection tbody {
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 130px;
+    /*position: relative;*/
+}
+table.tableSection tr {
+    width: 100%;
+    display: table;
+    text-align: left;
+    /*position: relative;*/
+}
+table.tableSection th, table.tableSection td {
+    word-break: break-all;
+}
+.tableSection td input {
+    border: none;
+}
+/*Custome CSS Table Cell Width*/
+
+
+
+/*Table head and Table Data Area*/
+table.tableSection th.th-dr-cr, table.tableSection td.td-dr-cr {
+    width: 10%;
+}
+table.tableSection th.th-ledger-name, table.tableSection td.td-ledger-name {
+    width: 30%;
+}
+table.tableSection th.th-narration, table.tableSection td.td-narration {
+    width: 20%;
+}
+table.tableSection th.th-cost-center, table.tableSection td.td-cost-center {
+    width: 20%;
+}
+table.tableSection th.th-debit, table.tableSection td.td-debit {
+    width: 10%;
+}
+table.tableSection th.th-credit, table.tableSection td.td-credit {
+    width: 10%;
+}
+table.tableSection th.th-hideShow {
+    width: 3px;
+    content: '';
+    display: -webkit-inline-box;
+}
+
+
+/* custome live search select picker for table cell one*/
+.table-select-1, .table-select-2, .table-select-3 {
+    display: block !important;
+    margin-top: -12px;
+    border: none;
+}
+
+.table-select-1 {
+    position: absolute;
+    width: -webkit-calc(10% - 7px) !important;
+}
+
+.table-select-2 {
+    position: absolute;
+    width: -webkit-calc(30% - 4px) !important;
+}
+.table-select-3 {
+    position: absolute;
+    width: -webkit-calc(20% - 4px) !important;
+}
+
+
+/*.btn-group.bootstrap-select.form-control-custome.table-select-1 {*/
+/*display: block;*/
+/*}*/
+
+.table-select-1 button {
+    width: -webkit-calc(98% - -6px) !important;
+}
+
+.table-select-2 button {
+    width: -webkit-calc(98% - -2px) !important;
+}
+
+.table-select-3 button {
+    width: -webkit-calc(98% - -2px) !important;
+}
+
+.table-select-1 button,.table-select-2 button,.table-select-3 button {
+    height: 24px;
+    font-size: 13px;
+    padding: 0 12px;
+    border: none;
+}
+/* End custome live search select picker for table cell one*/
+
+
+
+
+
+
+/*Custome Input Form-control*/
+.form-control-custome {
+    height: 24px;
+}
+
+/*Table Footer
+================*/
+
+table.tableSection td.td-total-narration {
+    width: 70%;
+}
+table.tableSection td.td-total {
+    width: 10%;
+}
+table.tableSection td.td-debit-total {
+    width: 10%;
+}
+table.tableSection td.td-credit-total {
+    width: 10%;
+}
+
+.td-debit-total,.td-credit-total {
+    border-bottom: 1px solid;
+}
+
+.td-debit-total::after,.td-credit-total::after {
+    content: '';
+    border: 1px solid;
+    width: 100% !important;
+    vertical-align: middle;
+    display: block;
+    border-bottom: 1px #000;
+}
+/*================
+End Table Footer*/
+
+
+
+/* =============================
+Total Area*/
+
+.total ::-webkit-input-placeholder {
+    text-align: right;
+    color: #000;
+}
+
+/*Top Section*/
+/*Tipu css code*/
+.content {margin-top:4px;}
+.top-lvl {
+    text-align: left;
+    padding-left: 100px;
+    margin-bottom: 5px;}
+
+.form-control {font-size:14px;margin: 0;padding-top: 0;padding-bottom: 0;}
+/* From group level Style*/
+.lbl {width: 10%;padding: 0;margin-right: 5px;}
+label {margin: 0;width:100%; font-weight: normal;} /*font-size: 0.9vw;*/
+/* From group input Style*/
+.inpt{width: 19%;padding: 0;margin-right: 20px;}
+
+
+/* Date Picker Style */
+span.input-group-addon {margin: 0; padding: 0px 12px;}
+#datepicker :hover{cursor: pointer;}
+
+.datepicker-days {height: 230px;}
+table.table-condensed tfoot {
+    display: none;
+}
+/* End Date Picker Style */
+
+
+/* Boostrap Live Search Style */
+
+
+.acc-vouc-table{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.acc-vouc-table>thead>tr>th {
+    padding: 0px 20px;
+}
+/* End Top Section*/

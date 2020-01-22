@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="main">
+    <head>
+        <title th:text="#{accounts.group.title}">Accounts Group</title>
+    </head>
+    <body>
+        <div class="right_col" role="main" layout:fragment="content">
+            <div th:if="${msg.getDisplay()}" class="alert alert-danger fade in" >
+                <!--<strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.-->
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong th:text="${msg.message}"></strong>
+            </div>
+
+            <div class="panel">
+                <div class="panel-heading one" th:if="${mode=='create'}" th:text="#{accounts.group.new.group}">Account New Group</div>
+                <div class="panel-heading one" th:if="${mode=='edit'}" th:text="#{accounts.group.update.group}">Account Group Information</div>
+
+                <div class="panel-body border-color">
+                    <form onsubmit="document.getElementById('parentCode').disabled = false;" th:action="@{/accountsGroup/}+${mode}" th:object="${AcGroup}" method="POST">
+                        <input type="hidden" th:field="*{id}"/>
+                        <!--<input type="hidden" name="isDefault" th:value="${AcGroup.isDefault()}"/>-->
+                        <input type="hidden" th:field="*{Default}" />
+
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{accounts.group.file.name}">Group Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control pull-right" th:field="*{Name}" placeholder="Group Name" th:autofocus="autofocus" th:required="required"/>
+                                <label class="control-label error" th:if="${#fields.hasErrors('Name')}" th:errors="*{Name}">Full Name Error</label>
+                            </div>
+                        </div>
+
+                        <div class="row form-group label-vertical-align">
+                            <label class="col-sm-3 col-form-label pull-left" th:text="#{accounts.group.file.under}">Under</label>
+                            <div class="col-sm-9">
+                                <select class="selectpicker form-control" th:field="*{parentCode}" data-live-search="true" disabled="disabled" th:if="${AcGroup.isDefault()==true}">
+                                    <option th:each="AcGroup:${AcGroupList}" th:value="${AcGroup.getId()}" th:text="${AcGroup.getName()}"></option>
+                                </select>
+                                <select class="selectpicker form-control" th:field="*{parentCode}" data-live-search="true" th:if="${AcGroup.isDefault()==false}">
+                                    <option th:each="AcGroup:${AcGroupList}" th:value="${AcGroup.getId()}" th:text="${AcGroup.getName()}"></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 right">
+                                <button th:if="${mode=='create'}" type="submit" class="btn btn-primary" th:text="#{default.button.create.label}">Save</button>
+                                <button th:if="${mode=='edit'}" type="submit" class="btn btn-primary" th:text="#{default.button.update.label}">Update</button>
+                                <a class="btn btn-primary" th:href="@{/accountsGroup}" th:text="#{default.button.cancel.label}">List</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script th:src="@{/js/bootstrap-select.js}"></script>
+    </body>
+</html>
